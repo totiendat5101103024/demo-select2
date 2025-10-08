@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao diện</title>
+
+    <!-- Install BootStrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Instal jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Install Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="/css/features.css">
+    <link rel="icon" type="image/png" href="/img/select2Logo.png">
+
+    <script src="/java/provincesAPI.js"></script> <!-- Link to API Provinces -->
+    <script src="/java/applySelect2.js"></script> <!-- Link to Apply Select2 -->
+
+
+    <style>
+        .js-class-example {
+            color: #080;
+        }
+
+        .js-function {
+            color: #008;
+        }
+
+        #container-width-table {
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- BANNER LOGO TOP -->
+    <div class="container mt-3 d-flex justify-content-center">
+        <img src="/img/Logo_HCMUE_MOET.png" style="width: 100%;">
+    </div>
+
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" style="font-size: 20px;">
+            <a class="navbar-brand" href="https://fit.hcmue.edu.vn/vn/" target="_blank">
+                <img src="/img/LOGO_FIT_2.png" style="width: 80%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/html/index.html" aria-current="page">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/html/installation.html">Cài đặt</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <label>Tính năng</label>
+                        </a>
+                        <ul class="dropdown-menu" style="font-size: 1.2rem;">
+                            <li><a class="dropdown-item" href="/html/features_basic.html">Tính năng cơ bản</a></li>
+                            <li><a class="dropdown-item" href="/html/features_multi.html">Hộp chọn nhiều lựa chọn</a></li>
+                            <li><a class="dropdown-item"><label>Giao diện</label></a></li>
+                            <li><a class="dropdown-item" href="/html/features_optionsCreation.html">Tạo tùy chọn động</a></li>
+                            <li><a class="dropdown-item" href="/html/features_dataFormat.html">Cấu trúc dữ liệu</a></li>
+                            <li><a class="dropdown-item" href="/html/features_ajaxData.html">Ajax (dữ liệu từ xa)</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Thành viên
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/html/member.html">Danh sách thành viên</a></li>
+                            <li><a class="dropdown-item" href="/html/member_add.html">Đăng ký thành viên</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- HEADER -->
+    <div class="container mt-5">
+        <h2 class="fw-bold text-primary text-center">GIAO DIỆN SELECT2</h2>
+    </div>
+
+    <div class="container-fluid px-5">
+        <p class="mt-5">
+            Sự xuất hiện của các điều khiển giao diện select2 của bạn có thể được tùy chỉnh thông qua các thuộc tính
+            HTML
+            tiêu chuẩn cho các phần tử
+            <code>&lt;select&gt;</code>, cũng như các tùy chọn cấu hình khác nhau.
+        </p>
+    </div>
+
+
+    <br><br>
+    <!-- DISABLING A SELECT2 CONTROL -->
+    <div class="container-fluid mt-4 px-5">
+        <h2>VÔ HIỆU HÓA SELECT2</h2>
+
+        <p class="mt-4">
+            Select2 sẽ trả lời thuộc tính bị vô hiệu hóa trên <code>disabled</code> trên phần tử
+            <code>&lt;select&gt;</code>.
+            Bạn cũng có thể khởi tạo select2 với <code>disabled: true</code> để có được hiệu ứng tương tự.
+        </p>
+
+        <!-- Disabling-Select box -->
+        <div class="container mx-0 p-0">
+            <div class="card mt-4">
+                <div class="card-header">
+                    CHỌN TỈNH/THÀNH PHỐ
+                </div>
+                <div class="card-body">
+                    <div class="mb-5 mt-2">
+                        <select class="form-select rounded-3" id="province-select-Select2-disable" disabled>
+                            <option value="">Vui lòng chờ...</option>
+                        </select>
+                    </div>
+                    <div class="mb-5">
+                        <select class="form-select rounded-3" id="province-select-Select2-multi-disable" disabled
+                            multiple>
+                            <option value="">Vui lòng chờ...</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="js-btn-enable btn btn-secondary"
+                        style="margin-right: 10px;">BẬT</button>
+                    <button type="button" class="js-btn-disable btn btn-secondary">TẮT</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript Code box -->
+        <div class="container mx-0 p-0">
+            <pre class="mt-0 mb-0">
+    <code>$(<span class="js-class-example">".js-example-disabled"</span>).select2();
+    $(<span class="js-class-example">".js-example-disabled-multi"</span>).select2();
+
+    $(<span class="js-class-example">".js-programmatic-enable"</span>).on(<span class="js-class-example">"click"</span>, <span class="js-function">function</span> () {
+        $(<span class="js-class-example">".js-example-disabled"</span>).prop(<span class="js-class-example">"disabled"</span>, <span class="js-function">false</span>);
+        $(<span class="js-class-example">".js-example-disabled-multi"</span>).prop(<span class="js-class-example">"disabled"</span>, <span class="js-function">false</span>);
+    });
+
+    $(<span class="js-class-example">".js-programmatic-disabled"</span>).on(<span class="js-class-example">"click"</span>, <span class="js-function">function</span> () {
+        $(<span class="js-class-example">".js-example-disabled"</span>).prop(<span class="js-class-example">"disabled"</span>, <span class="js-function">true</span>);
+        $(<span class="js-class-example">".js-example-disabled-multi"</span>).prop(<span class="js-class-example">"disabled"</span>, <span class="js-function">true</span>);
+    });</code></pre>
+        </div>
+
+    </div>
+
+
+    <br><br>
+    <!-- CONTAINER WIDTH -->
+    <div class="container-fluid mt-4 px-5">
+        <h2>CHIỀU RỘNG CONTAINER</h2>
+
+        <p class="mt-4">
+            Select2 sẽ cố gắng khớp với chiều rộng của phần tử gốc càng gần càng tốt. Đôi khi điều này không hoàn hảo,
+            trong trường hợp đó bạn có thể đặt tùy chọn cấu hình <code>width</code> theo cách thủ công:
+        </p>
+
+        <!-- VALUE TABLE -->
+        <div class="container mx-0 p-0" id="container-width-table">
+            <table class="table border table-striped-columns table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Giá trị</th>
+                        <th>Miêu tả</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>'element'</code></td>
+                        <td>Sử dụng chiều rộng phần tử được tính toán từ bất kỳ quy tắc CSS nào có thể áp dụng.</td>
+                    </tr>
+                    <tr>
+                        <td><code>'style'</code></td>
+                        <td>
+                            Chiều rộng được xác định từ thuộc tính <code>select</code> của thuộc tính
+                            <code>style</code>. Nếu không tìm thấy thuộc tính
+                            <code>style</code>, giá trị null sẽ được trả về làm chiều rộng.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>'resolve'</code></td>
+                        <td>
+                            Sử dụng giá trị thuộc tính <code>style</code> nếu có, quay lại chiều rộng phần tử đã tính
+                            toán nếu cần.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>'&lt;value&gt;'</code></td>
+                        <td>
+                            Các giá trị CSS hợp lệ có thể được truyền dưới dạng chuỗi (ví dụ:
+                            <code>width: '80%'</code>).
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <h3>VÍ DỤ</h3>
+
+        <p class="mt-4">
+            Hai hộp Select2 bên dưới được thiết kế theo chiều rộng lần lượt là <code>50%</code> và <code>75%</code>
+            để hỗ trợ thích nghi thiết kế:
+        </p>
+
+        <!-- EXAMPLE WIDTH  -->
+        <div class="container mx-0 p-0">
+            <div class="card mt-4">
+                <div class="card-header">
+                    CHỌN TỈNH/THÀNH PHỐ
+                </div>
+                <div class="card-body">
+                    <div class="mb-5 mt-2">
+                        <select class="form-select rounded-3" id="province-select-Select2-w-50" style="width: 50%;"
+                            disabled>
+                            <option value="">Vui lòng chờ...</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="form-select rounded-3" id="province-select-Select2-w-75" disabled
+                            style="width: 75%;" multiple>
+                            <option value="">Vui lòng chờ...</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- HTML Code box -->
+        <div class="container mx-0 p-0">
+            <pre class="mt-0 mb-0">
+    <code>&lt;<span class="js-function">select class</span>=<span class="js-class-example">"js-example-responsive"</span> style=<span class="js-class-example">"width: 50%"</span>&gt;&lt;/<span class="js-function">select</span>&gt;
+    &lt;<span class="js-function">select class</span>=<span class="js-class-example">"js-example-responsive"</span> style=<span class="js-class-example">"width: 75%"</span> multiple=<span class="js-class-example">"multiple"</span>&gt;&lt;/<span class="js-function">select</span>&gt;</code></pre>
+        </div>
+
+
+        <!-- JavaScript Code box -->
+        <div class="container mx-0 p-0">
+            <pre class="mt-3 mb-0 p-2" style="border: 1px solid">
+<code>$(<span class="js-class-example">".js-example-responsive"</span>).select2({
+        width: <span class="js-class-example">'resolve'</span> <span style="color: #800">// Cần ghi đè thay đổi mặc định</span>
+});</code></pre>
+        </div>
+
+
+        <!-- BLOCK QUOTE TIPS -->
+        <div class="container mx-0 mt-4 p-0">
+            <div class="container mx-0 p-0" id="blockquotes">
+                <div class="container-fluid" id="blockquotes-header" style="background-color: #e06f6c;">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <span>CẢNH BÁO</span>
+                </div>
+                <div class="container-fluid" id="blockquotes-middle" style="background-color: #fae2e2;">
+                    <p>
+                        Select2 sẽ cố gắng hết sức để giải quyết chiều rộng phần trăm được chỉ định thông qua một lớp
+                        CSS, nhưng điều này không phải lúc nào cũng khả thi. Cách tốt nhất để đảm bảo Select2 sử dụng
+                        chiều rộng dựa trên phần trăm là nhúng khai báo kiểu vào thẻ <code>style</code>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!-- Khoảng trắng cuối trang -->
+    <div style="height: 20rem;"></div>
+
+</body>
+
+</html>

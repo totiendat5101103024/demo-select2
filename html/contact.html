@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+
+    <!-- Install BootStrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Instal jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Install Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="/css/features.css">
+
+    <link rel="icon" type="image/png" href="/img/select2Logo.png">
+
+    <script src="/java/provincesAPI.js"></script> <!-- Link to API Provinces -->
+    <script src="/java/applySelect2.js"></script> <!-- Link to Apply Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+
+    <style>
+        .contact-section {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            min-height: 450px;
+        }
+
+        .info-container {
+            padding: 3rem;
+        }
+
+        .text-primary-custom {
+            color: #0056b3 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- BANNER LOGO TOP -->
+    <div class="container mt-3 d-flex justify-content-center">
+        <img src="/img/Logo_HCMUE_MOET.png" style="width: 100%;">
+    </div>
+
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" style="font-size: 20px;">
+            <a class="navbar-brand" href="https://fit.hcmue.edu.vn/vn/" target="_blank">
+                <img src="/img/LOGO_FIT_2.png" style="width: 80%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/html/index.html" aria-current="page">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/html/installation.html">Cài đặt</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Tính năng
+                        </a>
+                        <ul class="dropdown-menu" style="font-size: 1.2rem;">
+                            <li><a class="dropdown-item" href="/html/features_basic.html">Tính năng cơ bản</a></li>
+                            <li><a class="dropdown-item" href="/html/features_multi.html">Hộp chọn nhiều lựa chọn</a>
+                            </li>
+                            <li><a class="dropdown-item" href="/html/features_appearance.html">Giao diện</a></li>
+                            <li><a class="dropdown-item" href="/html/features_optionsCreation.html">Tạo tùy chọn
+                                    động</a></li>
+                            <li><a class="dropdown-item" href="/html/features_dataFormat.html">Cấu trúc dữ liệu</a></li>
+                            <li><a class="dropdown-item" href="/html/features_ajaxData.html">Ajax (dữ liệu từ xa)</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Thành viên
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/html/member.html">Danh sách thành viên</a></li>
+                            <li><a class="dropdown-item" href="/html/member_add.html">Đăng ký thành viên</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><label>Liên hệ</label></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container my-5">
+
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-primary-custom">LIÊN HỆ</h1>
+            <p class="lead text-secondary">Chúng tôi luôn sẵn sàng lắng nghe ý kiến từ bạn.</p>
+        </div>
+
+        <div class="row g-0 contact-section">
+
+            <div class="col-lg-6 map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31357.204200432854!2d106.64613451083984!3d10.761393999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b91dddf0b%3A0x1ab004c91f448812!2sHo%20Chi%20Minh%20City%20University%20of%20Education!5e0!3m2!1sen!2s!4v1759909011847!5m2!1sen!2s"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="info-container w-100">
+                    <h3 class="fw-bold text-primary-custom mb-4">Thông tin nơi thực hiện dự án</h3>
+
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="bi bi-building fs-4 me-3 text-primary-custom"></i>
+                        <div>
+                            <h5 class="fw-bold mb-0">Trường Đại học Sư phạm TP. Hồ Chí Minh</h5>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="bi bi-mortarboard fs-4 me-3 text-primary-custom"></i>
+                        <div>
+                            <h5 class="fw-bold mb-0">Khoa Công nghệ Thông tin</h5>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-4">
+                        <i class="bi bi-geo-alt-fill fs-4 me-3 text-primary-custom"></i>
+                        <div>
+                            <h5 class="fw-bold mb-1">Địa chỉ</h5>
+                            <p class="text-muted mb-0">280 An Dương Vương, Phường 4, Quận 5, Thành phố Hồ Chí Minh</p>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="d-flex align-items-start">
+                        <i class="bi bi-box-seam fs-4 me-3 text-primary-custom"></i>
+                        <div>
+                            <h5 class="fw-bold mb-1">Tên sản phẩm</h5>
+                            <p class="text-muted mb-0">Web Demo Select2</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div> 
+    </div> 
+
+</body>
+
+</html>

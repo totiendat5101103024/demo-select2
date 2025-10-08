@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hộp chọn nhiều lựa chọn</title>
+    <!-- Install BootStrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Instal jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Install Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="/css/features.css">
+    <link rel="icon" type="image/png" href="/img/select2Logo.png">
+
+    <script src="/java/provincesAPI.js"></script> <!-- Link to API Provinces -->
+    <script src="/java/applySelect2.js"></script> <!-- Link to Apply Select2 -->
+
+</head>
+
+<body>
+    <!-- BANNER LOGO TOP -->
+    <div class="container mt-3 d-flex justify-content-center">
+        <img src="/img/Logo_HCMUE_MOET.png" style="width: 100%;">
+    </div>
+
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" style="font-size: 20px;">
+            <a class="navbar-brand" href="https://fit.hcmue.edu.vn/vn/" target="_blank">
+                <img src="/img/LOGO_FIT_2.png" style="width: 80%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/html/index.html" aria-current="page">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/html/installation.html">Cài đặt</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <label>Tính năng</label>
+                        </a>
+                        <ul class="dropdown-menu" style="font-size: 1.2rem;">
+                            <li><a class="dropdown-item" href="/html/features_basic.html">Tính năng cơ bản</a></li>
+                            <li><a class="dropdown-item"><label>Hộp chọn nhiều lựa chọn</label></a></li>
+                            <li><a class="dropdown-item" href="/html/features_appearance.html">Giao diện</a></li>
+                            <li><a class="dropdown-item" href="/html/features_optionsCreation.html">Tạo tùy chọn động</a></li>
+                            <li><a class="dropdown-item" href="/html/features_dataFormat.html">Cấu trúc dữ liệu</a></li>
+                            <li><a class="dropdown-item" href="/html/features_ajaxData.html">Ajax (dữ liệu từ xa)</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Thành viên
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/html/member.html">Danh sách thành viên</a></li>
+                            <li><a class="dropdown-item" href="/html/member_add.html">Đăng ký thành viên</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- HEADER -->
+    <div class="container mt-5">
+        <h2 class="fw-bold text-primary text-center">HỘP CHỌN NHIỀU LỰA CHỌN SELECT2</h2>
+    </div>
+
+
+    <br><br>
+    <!-- MULTI-SELECT BOX -->
+    <div class="container-fluid mt-4 px-5">
+        <h2>BUỘC MENU THẢ XUỐNG VẪN MỞ SAU KHI CHỌN</h2>
+
+        <!-- Multi-Select box -->
+        <div class="container mx-0 p-0">
+            <div class="card mt-4">
+                <div class="card-header">
+                    CHỌN TỈNH/THÀNH PHỐ
+                </div>
+                <div class="card-body">
+                    <select class="form-select rounded-3" id="province-select-Select2-multi-dp" disabled multiple>
+                        <option value="">Vui lòng chờ...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-4">
+            Select2 sẽ tự động đóng menu thả xuống khi một phần tử được chọn, tương tự như hộp chọn thông thường. Bạn có
+            thể sử dụng tùy chọn <code>closeOnSelect</code> để ngăn menu thả xuống đóng khi một kết quả được chọn:
+        </p>
+
+        <!-- JavaScript Code box -->
+        <div class="container mx-0 p-0">
+            <pre class="mt-0 mb-0">
+    <code>$(<span class="js-document">document</span>).ready(<span class="js-function">function</span><span style="color: #4271ae">()</span> {
+        $('<span class="js-class-example">.js-example-basic-multiple</span>').select2({
+            closeOnSelect: <span style="color: #f5871f">false</span>
+        });
+    });</code></pre>
+        </div>
+
+        <p class="mt-4">
+            Lưu ý rằng tùy chọn này chỉ áp dụng cho các điều khiển chọn nhiều.
+        </p>
+    </div>
+
+    <!-- BLOCK QUOTE TIPS -->
+    <div class="container-fluid mt-4 px-5">
+        <div class="container mx-0 p-0" id="blockquotes">
+            <div class="container-fluid" id="blockquotes-header" style="background-color: #F0B37E;">
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <span>THÔNG TIN</span>
+            </div>
+            <div class="container-fluid" id="blockquotes-middle" style="background-color: #fff2db;">
+                <p>
+                    Nếu không sử dụng trình<a href="/advanced/default-adapters/dropdown#closeonselect"> trang trí</a>
+                    <code>CloseOnSelect</code>
+                    (hoặc <code>closeOnSelect</code> được đặt thành <code>false</code>),
+                    menu thả xuống sẽ không tự động đóng khi kết quả được chọn. Menu thả xuống cũng sẽ không bao giờ
+                    đóng nếu giữ phím
+                    <kbd>ctrl</kbd> khi kết quả được chọn.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <br><br>
+    <!-- LIMITING THE NUMBER OF SELECTIONS -->
+    <div class="container-fluid mt-4 px-5">
+        <h2>GIỚI HẠN SỐ LƯỢNG LỰA CHỌN</h2>
+
+        <p class="mt-4">
+            Select2 Hộp chọn nhiều giá trị có thể đặt các hạn chế liên quan đến số lượng tùy chọn tối đa có thể được
+            chọn. Chọn bên dưới được khai báo với thuộc tính
+            <code>multiple</code> với <code>maximumSelectionLength</code> trong các tùy chọn Select2.
+        </p>
+
+        <!-- Multi-Select box -->
+        <div class="container mx-0 p-0">
+            <div class="card mt-4">
+                <div class="card-header">
+                    CHỌN TỈNH/THÀNH PHỐ (GIỚI HẠN 3 LỰA CHỌN)
+                </div>
+                <div class="card-body">
+                    <select class="form-select rounded-3" id="province-select-Select2-multi-limit" disabled multiple>
+                        <option value="">Vui lòng chờ...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- JavaScript Code box -->
+        <div class="container mx-0 p-0">
+            <pre class="mt-0 mb-0">
+    <code>$(<span class="js-document">document</span>).ready(<span class="js-function">function</span><span style="color: #4271ae">()</span> {
+        $('<span class="js-class-example">.js-example-basic-multiple</span>').select2({
+            maximumSelectionLength: <span style="color: #f5871f">3</span>
+        });
+    });</code></pre>
+        </div>
+    </div>
+
+
+
+    <br><br>
+    <!-- CLEARABLE SELECTIONS -->
+    <div class="container-fluid mt-4 px-5">
+        <h2>XÓA LỰA CHỌN</h2>
+
+        <p class="mt-4">
+            Khi được đặt thành <code>true</code>, làm cho một nút rõ ràng (biểu tượng "X") xuất hiện trên hộp chọn khi
+            một giá trị được chọn. Nhấp vào nút Xóa sẽ xóa giá trị đã chọn, đặt lại hiệu quả hộp chọn trở lại giá trị
+            giữ chỗ của nó.
+        </p>
+
+        <!-- Multi-Select box -->
+        <div class="container mx-0 p-0">
+            <div class="card mt-4">
+                <div class="card-header">
+                    CHỌN TỈNH/THÀNH PHỐ
+                </div>
+                <div class="card-body">
+                    <select class="form-select rounded-3" id="province-select-Select2-multi-clearable" disabled
+                        multiple>
+                        <option value="">Vui lòng chờ...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript Code box -->
+        <div class="container mx-0 p-0">
+            <pre class="mt-0 mb-0">
+    <code>$(<span class="js-document">document</span>).ready(<span class="js-function">function</span><span style="color: #4271ae">()</span> {
+        $('<span class="js-class-example">.js-example-basic-multiple</span>').select2({
+            placeholder: <span class="js-class-example">'Chọn Tỉnh/Thành phố'</span>
+            allowClear: <span style="color: #f5871f">true</span>
+        });
+    });</code></pre>
+        </div>
+    </div>
+
+
+    <!-- BLOCK QUOTE TIPS -->
+    <div class="container-fluid mt-4 px-5">
+        <div class="container mx-0 p-0" id="blockquotes">
+            <div class="container-fluid" id="blockquotes-header" style="background-color: #F0B37E;">
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <span>THÔNG TIN</span>
+            </div>
+            <div class="container-fluid" id="blockquotes-middle" style="background-color: #fff2db;">
+                <p>
+                    Nếu bạn không thêm thuộc tính <code>placeholder</code> thì <code>allowClear</code> có thể sẽ không
+                    hoạt động.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Khoảng trắng cuối trang -->
+    <div style="height: 20rem;"></div>
+
+
+
+
+</body>
+
+</html>

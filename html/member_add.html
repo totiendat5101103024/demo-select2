@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký thành viên mới</title>
+
+    <!-- Install BootStrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Instal jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Install Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="/css/features.css">
+    <link rel="icon" type="image/png" href="/img/select2Logo.png">
+
+    <script src="/java/provincesAPI.js"></script> <!-- Link to API Provinces -->
+    <script src="/java/applySelect2.js"></script> <!-- Link to Apply Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        .btn-primary {
+            /* Tùy chỉnh màu nút primary của Bootstrap để giống màu xanh trong ảnh */
+            --bs-btn-bg: #0056b3;
+            --bs-btn-border-color: #0056b3;
+            --bs-btn-hover-bg: #004494;
+            --bs-btn-hover-border-color: #004494;
+        }
+
+        .text-primary {
+            /* Tùy chỉnh màu chữ primary của Bootstrap */
+            color: #0056b3 !important;
+        }
+    </style>
+
+    <script>
+        function submit() {
+            let checkName = document.getElementById('fullName').value;
+            let checkEmail = document.getElementById('email').value;
+            let checkRole = document.getElementById('role').value;
+
+            if (checkName == '' && checkEmail == '' && checkRole == '') {
+                Swal.fire({
+                    title: 'THIẾU THÔNG TIN!',
+                    text: 'Bạn chưa nhập thông tin nào, hãy nhập thông tin!',
+                    icon: 'error',
+                    confirmButtonText: 'Nhập lại'
+                })
+            } else if (checkName == '') {
+                Swal.fire({
+                    title: 'THIẾU THÔNG TIN!',
+                    text: 'Bạn chưa nhập họ và tên!',
+                    icon: 'warning',
+                    confirmButtonText: 'Nhập lại'
+                })
+            } else if (checkEmail == '') {
+                Swal.fire({
+                    title: 'THIẾU THÔNG TIN!',
+                    text: 'Bạn chưa nhập email!',
+                    icon: 'warning',
+                    confirmButtonText: 'Nhập lại'
+                })
+            } else if (checkRole == '') {
+                Swal.fire({
+                    title: 'THIẾU THÔNG TIN!',
+                    text: 'Bạn chưa họn vai trò!',
+                    icon: 'warning',
+                    confirmButtonText: 'Nhập lại'
+                })
+            } else {
+                const userInfoHtml = `
+            <div style="text-align: left; padding-left: 20px;">
+                <p><strong>Họ và tên:</strong> ${checkName}</p>
+                <p><strong>Email:</strong> ${checkEmail}</p>
+                <p><strong>Vai trò:</strong> ${checkRole}</p>
+            </div>
+        `;
+                Swal.fire({
+                    title: 'KIỂM TRA LẠI THÔNG TIN!',
+                    html: userInfoHtml,
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Xác nhận & Gửi đi',
+                    cancelButtonText: 'Sửa lại'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Đã gửi!',
+                            'Thông tin của bạn đã được ghi nhận.',
+                            'success'
+                        );
+                    }
+                });
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <!-- BANNER LOGO TOP -->
+    <div class="container mt-3 d-flex justify-content-center">
+        <img src="/img/Logo_HCMUE_MOET.png" style="width: 100%;">
+    </div>
+
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" style="font-size: 20px;">
+            <a class="navbar-brand" href="https://fit.hcmue.edu.vn/vn/" target="_blank">
+                <img src="/img/LOGO_FIT_2.png" style="width: 80%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/html/index.html" aria-current="page">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/html/installation.html">Cài đặt</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Tính năng
+                        </a>
+                        <ul class="dropdown-menu" style="font-size: 1.2rem;">
+                            <li><a class="dropdown-item" href="/html/features_basic.html">Tính năng cơ bản</a></li>
+                            <li><a class="dropdown-item" href="/html/features_multi.html">Hộp chọn nhiều lựa chọn</a>
+                            </li>
+                            <li><a class="dropdown-item" href="/html/features_appearance.html">Giao diện</a></li>
+                            <li><a class="dropdown-item" href="/html/features_optionsCreation.html">Tạo tùy chọn
+                                    động</a></li>
+                            <li><a class="dropdown-item" href="/html/features_dataFormat.html">Cấu trúc dữ liệu</a></li>
+                            <li><a class="dropdown-item" href="/html/features_ajaxData.html">Ajax (dữ liệu từ xa)</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <label>Thành viên</label>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/html/member.html">Danh sách thành viên</a></li>
+                            <li><a class="dropdown-item"><label>Đăng ký thành viên</label></a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/html/contact.html">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+
+                <div class="text-center mb-5">
+                    <h1 class="display-5 text-primary fw-bold text-uppercase">Đăng Ký Thành Viên Mới</h1>
+                    <p class="lead text-secondary">Vui lòng điền đầy đủ thông tin để tham gia dự án.</p>
+                </div>
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <form id="registrationForm">
+
+                            <div class="mb-4">
+                                <label class="form-label fs-5">Họ và Tên</label>
+                                <input type="text" class="form-control form-control-lg" id="fullName"
+                                    placeholder="Ví dụ: Nguyễn Văn A" value="" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fs-5">Email</label>
+                                <input type="email" class="form-control form-control-lg" id="email"
+                                    placeholder="Ví dụ: 5101103024@student.hcmue.edu.vn" value="" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="role" class="form-label fs-5">Vai trò trong dự án</label>
+                                <select class="form-select form-select-lg" id="role" required>
+                                    <option value="" disabled selected>-- Chọn vai trò --</option>
+                                    <option value="Trưởng nhóm">Trưởng Nhóm</option>
+                                    <option value="Thành viên">Thành Viên</option>
+                                    <option value="Cố vấn">Cố vấn</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="description" class="form-label fs-5">Mô tả ngắn về nhiệm vụ</label>
+                                <textarea class="form-control form-control-lg" id="description" rows="4"
+                                    placeholder="Ví dụ: Chịu trách nhiệm phát triển giao diện người dùng..."></textarea>
+                            </div>
+
+                            <div class="d-grid" onclick="submit()">
+                                <button type="button" class="btn btn-primary btn-lg fw-bold text-uppercase">Đăng
+                                    Ký</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

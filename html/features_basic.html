@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính năng Select2</title>
+
+    <!-- Install BootStrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Instal jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Install Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="/css/features.css">
+    <link rel="icon" type="image/png" href="/img/select2Logo.png">
+
+    <script src="/java/provincesAPI.js"></script> <!-- Link to API Provinces -->
+    <script src="/java/applySelect2.js"></script> <!-- Link to Apply Select2 -->
+
+    
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.css">
+
+</head>
+
+<body>
+    <!-- BANNER LOGO TOP -->
+    <div class="container mt-3 d-flex justify-content-center">
+        <img src="/img/Logo_HCMUE_MOET.png" style="width: 100%;">
+    </div>
+
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" style="font-size: 20px;">
+            <a class="navbar-brand" href="https://fit.hcmue.edu.vn/vn/" target="_blank">
+                <img src="/img/LOGO_FIT_2.png" style="width: 80%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/html/index.html" aria-current="page">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/html/installation.html">Cài đặt</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <label>Tính năng</label>
+                        </a>
+                        <ul class="dropdown-menu" style="font-size: 1.2rem;">
+                            <li><a class="dropdown-item"><label>Tính năng cơ bản</label></a></li>
+                            <li><a class="dropdown-item" href="/html/features_multi.html">Hộp chọn nhiều lựa chọn</a></li>
+                            <li><a class="dropdown-item" href="/html/features_appearance.html">Giao diện</a></li>
+                            <li><a class="dropdown-item" href="/html/features_optionsCreation.html">Tạo tùy chọn động</a></li>
+                            <li><a class="dropdown-item" href="/html/features_dataFormat.html">Cấu trúc dữ liệu</a></li>
+                            <li><a class="dropdown-item" href="/html/features_ajaxData.html">Ajax (dữ liệu từ xa)</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Thành viên
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/html/member.html">Danh sách thành viên</a></li>
+                            <li><a class="dropdown-item" href="/html/member_add.html">Đăng ký thành viên</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- HEADER -->
+    <div class="container mt-5">
+        <h2 class="fw-bold text-primary text-center">TÍNH NĂNG SELECT2</h2>
+    </div>
+
+    <br><br>
+    <!-- SINGLE SELECT BOX -->
+    <div class="container-fluid mt-4 px-5">
+        <h2>HỘP CHỌN ĐƠN</h2>
+        <p class="mt-4">
+            Select2 được thiết kế để thay thế cho hộp <code>&lt;select&gt;</code> tiêu chuẩn được hiển thị trên trình
+            duyệt. Theo mặc định, nó hỗ trợ tất cả các tùy chọn và thao tác có sẵn trong hộp select tiêu chuẩn,
+            nhưng với tính linh hoạt cao hơn.
+        </p>
+
+
+        <p class="mt-4">
+            Select2 có thể biến đổi hộp chọn thông thường như thế này...
+        </p>
+
+        <!-- Select box 1 -->
+        <div class="container mx-0 p-0">
+            <div class="card">
+                <div class="card-header">
+                    CHỌN TỈNH/THÀNH PHỐ
+                </div>
+                <div class="card-body">
+                    <select class="form-select rounded-3" id="province-select-noSelect2" disabled>
+                        <option value="">Vui lòng chờ...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-4">
+            thành như thế này...
+        </p>
+
+        <!-- Select box 2 -->
+        <div class="container mx-0 p-0">
+            <div class="card">
+                <div class="card-header">
+                    CHỌN TỈNH/THÀNH PHỐ
+                </div>
+                <div class="card-body">
+                    <select class="form-select rounded-3" id="province-select-Select2" disabled>
+                        <option value="">Vui lòng chờ...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-4">
+            Select2 sẽ tự đăng ký là một hàm jQuery nếu bạn sử dụng bất kỳ bản phân phối nào, do đó bạn có thể gọi
+            <code>.select2()</code> trên bất kỳ bộ chọn jQuery nào mà bạn muốn khởi tạo Select2.
+        </p>
+
+        <!-- JavaScript Code box -->
+        <div class="container mx-0 p-0">
+            <pre> <span class="comment"><code>    //Trong Javascript của bạn (file .js bên ngoài hoặc thẻ &lt;script&gt;)</code></span>
+    <code>$(<span class="js-document">document</span>).ready(<span class="js-function">function</span><span style="color: #4271ae">()</span> {
+        $('<span class="js-class-example">.js-example-basic-single</span>').select2();
+    });</code></pre>
+        </div>
+    </div>
+
+    <!-- BLOCK QUOTE TIPS -->
+    <div class="container-fluid mt-4 px-5">
+        <div class="container mx-0 p-0" id="blockquotes">
+            <div class="container-fluid" id="blockquotes-header">
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <span>THÔNG TIN</span>
+            </div>
+            <div class="container-fluid" id="blockquotes-middle">
+                <p>
+                    DOM không thể được thao tác an toàn cho đến khi nó "sẵn sàng". Để đảm bảo DOM của bạn đã sẵn sàng
+                    trước khi trình duyệt khởi tạo điều khiển Select2, hãy bọc mã của bạn trong khối
+                    <code>$(document).ready()</code>. Mỗi trang chỉ cần một khối <code>$(document).ready()</code>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <br><br>
+    <!-- MULTI-SELECT BOX -->
+    <div class="container-fluid mt-4 px-5">
+        <h2>HỘP CHỌN NHIỀU LỰA CHỌN</h2>
+
+        <p class="mt-4">
+            Select2 cũng hỗ trợ các hộp chọn đa giá trị. Lệnh select bên dưới được khai báo với thuộc tính
+            <code>multiple</code>.
+        </p>
+
+
+        <!-- Multi-Select box -->
+        <div class="container mx-0 p-0">
+            <div class="card mt-4">
+                <div class="card-header">
+                    CHỌN TỈNH/THÀNH PHỐ
+                </div>
+                <div class="card-body">
+                    <select class="form-select rounded-3" id="province-select-Select2-multi" disabled multiple>
+                        <option value="">Vui lòng chờ...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-5 mb-5">
+            <strong>Trong HTML</strong>
+        </p>
+
+
+        <!-- HTML Code box -->
+        <div class="container mx-0 p-0">
+            <pre class="mt-0 mb-0">
+    <code>&lt;<span class="js-function">select class</span>=<span class="js-class-example">"js-example-basic-multiple"</span> name=<span class="js-class-example">"states[]"</span> multiple=<span class="js-class-example">"multiple"</span>&gt;
+        &lt;option <span class="js-function">value</span>=<span class="js-class-example">"HCM"</span>&gt; Thành phố Hồ Chí Minh &lt;/option&gt;
+            ...
+        &lt;option <span class="js-function">value</span>=<span class="js-class-example">"HN"</span>&gt; Thành phố Hà Nội &lt;/option&gt;
+    &lt;/<span class="js-function">select</span>&gt;</code></pre>
+        </div>
+
+        <p class="mt-5 mb-5">
+            <strong>Trong JavaScript của bạn (file <code>.js</code> bên ngoài hoặc thẻ
+                <code>&lt;script&gt;</code>):</strong>
+        </p>
+
+        <!-- JavaScript Code box -->
+        <div class="container mx-0 p-0">
+            <pre class="mt-0 mb-0">
+    <code>$(<span class="js-document">document</span>).ready(<span class="js-function">function</span><span style="color: #4271ae">()</span> {
+        $('<span class="js-class-example">.js-example-basic-multiple</span>').select2();
+    });</code></pre>
+        </div>
+    </div>
+
+
+    <!-- Khoảng trắng cuối trang -->
+    <div style="height: 20rem;"></div>
+
+
+
+
+
+</body>
+
+</html>
