@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // const selectElement17 = document.getElementById('province-select-Select2-disable');
     
 
-    const selectElements = [selectElement1, selectElement2, selectElement3, selectElement4, selectElement5, selectElement6, selectElement7, selectElement8, selectElement9, selectElement10, selectElement11, selectElement12, selectElement13, selectElement14, selectElement15].filter(el => el !== null);
+    const selectElements = [selectElement1, selectElement2, selectElement3, selectElement4, selectElement5, selectElement6, selectElement7, 
+                            selectElement8, selectElement9, selectElement10, selectElement11, selectElement12, selectElement13, selectElement14, 
+                            selectElement15].filter(el => el !== null);
 
     // Kiểm tra nhanh: nếu không tìm thấy ít nhất một phần tử, dừng lại.
     if (selectElements.length === 0) {
